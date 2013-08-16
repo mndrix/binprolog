@@ -3,13 +3,13 @@
 VERS=12xx
 SRC = `pwd`
 LIBDIR = ../lib
-AR = ar vr
+AR = llvm-ar vr
 LIBS = -lm
 
-GCC = gcc
-OPTI= $(DEFS) -O
+GCC = emcc #gcc
+OPTI= $(DEFS) -O3
 
-GCCS = $(GCC) -fomit-frame-pointer $(OPTI)3
+GCCS = $(GCC) -fomit-frame-pointer $(OPTI)
 CC= $(GCCS)
 
 LDO = $(CC)
@@ -76,6 +76,8 @@ extra:	all bp
 basic:	minimal binpro lib
 
 minimal:	ru wam.bp
+	mv ru ru.bc
+	emcc $(OPTI) ru.bc -o ru.js --embed-file wam.bp --embed-file myprogs/hello.pl -s TOTAL_MEMORY=33554432 #-s ALLOW_MEMORY_GROWTH=1
 
 most:	minimal step1 step2
 

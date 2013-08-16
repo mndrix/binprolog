@@ -89,7 +89,7 @@ static void io_mes0(char *mes) {
 
 
 
-#if 0
+#if 1
 
 /* stubs replacing real code if socks do not work */
 
@@ -164,7 +164,8 @@ bp_long close_socket(bp_long sock) {
 #include <netinet/tcp.h> /* will break WINGCC - just comment it out */
 #endif
 char *inet_ntoa();
-extern unsigned long inet_addr(char *name);
+//extern unsigned long inet_addr(char *name);
+extern in_addr_t inet_addr(const char *cp);
 extern int errno;
 #define WSAGetLastError() errno
 #endif
