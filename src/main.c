@@ -45,7 +45,7 @@ DLL_EXPORT(int) bp_main(int argc, char **argv)
   void *wam=init_bp(argc,argv,stdin,stdout);
   ok=(!!wam);
   initcode=init_c();
-  printf("Started Prolog Runtime System %d.\n",initcode);
+  //printf("Started Prolog Runtime System %d.\n",initcode);
   ok=ok && (initcode>0); /* inialise C-code for the host in c.c */
 
   if(ok) {
